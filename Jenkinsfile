@@ -10,8 +10,24 @@ pipeline {
          pollSCM('* * * * *') // Polling Source Control
      }
 
-stages{
-        stage('Build'){
+	 stages{
+	 	stage('Init') {
+			 steps {
+				 echo "Testing..."
+			 }
+		 }
+		 stage('Building') {
+			 steps {
+				 echo "Building..."
+			 }
+		 }
+		 stage('Deploy') {
+			 steps {
+				 echo "Code deployed..."
+			 }
+		 }
+	 }
+        /*stage('Build'){
             steps {
                 sh 'mvn clean package'
             }
@@ -38,5 +54,5 @@ stages{
                 }
             }
         }
-    }
+    }*/
 }
