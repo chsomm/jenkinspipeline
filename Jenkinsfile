@@ -1,4 +1,4 @@
-def externalMethod = load("jenkingspipeline_groovy/src/test/test.groovy")
+def modules = [:]
 
 pipeline {
     agent any
@@ -7,11 +7,15 @@ pipeline {
 		stage('Build') {
 			steps {
                bat 'mvn clean package'
+               script{
+               	 	modules.first = load "jenkinspipeline-groovy/src/test/test.groovy"
+               	 	modules.first.test1()
+               	 	modules.first.test2()
+               }
            	}
            	post {
             	success {
                    echo 'Now Archiving...'
-                   externalMethod.lookAtThis("Steve")
                    archiveArtifacts artifacts: '**/target/*.war'
                	}
           	}
