@@ -8,7 +8,7 @@ pipeline {
 			steps {
                bat 'mvn clean package'
                script{
-               	 	modules.first = load "jenkinspipeline-groovy/src/test/test.groovy"
+               	 	modules.first = load "jenkinspipeline_groovy/src/test/test.groovy"
                	 	modules.first.test1()
                	 	modules.first.test2()
                }
