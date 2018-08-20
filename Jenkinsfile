@@ -1,3 +1,5 @@
+def externalMethod = load("jenkingspipeline_groovy/src/test/test.groovy")
+
 pipeline {
     agent any
 
@@ -9,6 +11,7 @@ pipeline {
            	post {
             	success {
                    echo 'Now Archiving...'
+                   externalMethod.lookAtThis("Steve")
                    archiveArtifacts artifacts: '**/target/*.war'
                	}
           	}
