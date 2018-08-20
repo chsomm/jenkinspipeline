@@ -17,6 +17,9 @@ pipeline {
             	success {
                    echo 'Now Archiving...'
                    archiveArtifacts artifacts: '**/target/*.war'
+                   script {
+                       modules.first.out("Archiving test")
+                   }
                	}
           	}
 		}
