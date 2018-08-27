@@ -1,52 +1,41 @@
-def modules = [:]
-
 pipeline {
-    agent any
+    ageny any
+	parameters {
+	    string(name: 'tomcat_dev', defaultValue: '18.223.112.135', desrciption: 'Staging Server')
+	    string(name: 'tomcat_prod', defaultValue: '13.59.206.81', desrciption: 'Production Server')
+    }
+
+    triggers {
+         pollSCM('* * * * *')
+     }
 
 	stages{
-		stage('Build') {
-			steps {
-               bat 'mvn clean package'
-               script{
-               	 	modules.first = load "jenkinspipeline_groovy/src/test/test.groovy"
-               	 	modules.first.test1()
-               	 	modules.first.test2()
-               }
-           	}
-           	post {
-            	success {
-                   echo 'Now Archiving...'
-                   archiveArtifacts artifacts: '**/target/*.war'
-                   script {
-                       modules.first.out("Archiving test")
-                   }
-               	}
-          	}
-		}
-		stage ('Deploy to Staging') {
-			steps {
-				build job: 'deploy-to-staging'                     
-			}
-       	}
-       	stage('Deploy to Production') {
-       		steps {
-				timeout(time:5, unit:'DAYS') {
-  					input message: 'Approve PRODUCTION Deployment?'
-				}
-                build job: 'deploy-to-prod'    
-       		}
-            post {
-     			success{
-					echo 'Code deployed to Production'
-     			}
-				 failure{
-				    echo 'Deployment failed' 
-				 }
-
+        stage('Build'){
+            steps {
+                bat 'mvn clean package'
             }
-         
-       	                    
-     	}
+            post {
+                success {
+                    echo 'Now Archiving...'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
+        }
 
-	 }
+        stage ('Deployments'){
+            parallel{
+                stage ('Deploy to Staging'){
+                    steps {
+                        bat "scp -i D:/Dev/Courses/Jenkinstomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                    }
+                }
+
+                stage ("Deploy to Production"){
+                    steps {
+                        bat "scp -i D:/Dev/Courses/Jenkinstomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                    }
+                }
+            }
+        }
+    }
 }
