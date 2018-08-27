@@ -1,8 +1,8 @@
 pipeline {
     agent any
 	parameters {
-	    string(name: 'tomcat_dev', defaultValue: 'localhost:8090', description: 'Staging Server')
-	    string(name: 'tomcat_prod', defaultValue: 'localhost:9090', description: 'Production Server')
+	    string(name: 'tomcat_dev', defaultValue: 'D:/Dev/Server/apache-tomcat-8.5.32-staging/webapps', description: 'Staging Server')
+	    string(name: 'tomcat_prod', defaultValue: 'D:/Dev/Server/apache-tomcat-8.5.32-prod/webapps', description: 'Production Server')
     }
 
     triggers {
