@@ -14,7 +14,7 @@ pipeline {
      }
 
 	stages{
-		stage("parameterizing") {
+		/*stage("parameterizing") {
             steps {
                 script {
                     if ("${params.Invoke_Parameters}" == "Yes") {
@@ -23,7 +23,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         
 		stage('Load Scripts') {
 			when {
