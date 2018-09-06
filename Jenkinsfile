@@ -24,6 +24,16 @@ pipeline {
                 }
             }
         }*/
+        stage('Checkout') {
+            steps {
+            	git branch: 'MASTER',
+                credentialsId: '770b7c26-254d-4106-9bc3-6ff8076710d3',
+                url: 'https://github.com/chsomm/jenkinspipeline.git'
+            }
+
+        }
+
+        
         
 		stage('Load Scripts') {
 			when {
