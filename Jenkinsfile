@@ -73,7 +73,6 @@ pipeline {
                 stage ("Deploy to Production"){
                     steps {
                         echo "${params.tomcat_prod}"
-                        echo "${outside_param}"
                     }
                 }
             }
