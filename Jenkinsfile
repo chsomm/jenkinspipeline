@@ -3,10 +3,10 @@ def modules = [:]
 pipeline {
     agent any
 	parameters {
-	    string(name: 'tomcat_dev', defaultValue: 'ec2-18-223-112-135.us-east-2.compute.amazonaws.com', description: 'Staging Server')
-	    string(name: 'tomcat_prod', defaultValue: 'ec2-13-59-206-81.us-east-2.compute.amazonaws.com', description: 'Production Server')
-	    booleanParam(name: 'LOAD_SCRIPTS', defaultValue: false, description: 'Load scripts')
-	    choice(name: 'Invoke_Parameters', choices:"Yes\nNo", description: "Do you whish to do a dry run to grab parameters?" )
+	    //string(name: 'tomcat_dev', defaultValue: 'ec2-18-223-112-135.us-east-2.compute.amazonaws.com', description: 'Staging Server')
+	    //string(name: 'tomcat_prod', defaultValue: 'ec2-13-59-206-81.us-east-2.compute.amazonaws.com', description: 'Production Server')
+	    //booleanParam(name: 'LOAD_SCRIPTS', defaultValue: false, description: 'Load scripts')
+	    //choice(name: 'Invoke_Parameters', choices:"Yes\nNo", description: "Do you whish to do a dry run to grab parameters?" )
     }
 
     triggers {
