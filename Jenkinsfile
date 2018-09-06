@@ -1,3 +1,9 @@
+def modules = [:]
+
+modules.first = load "jenkinspipeline_groovy/src/test/test.groovy"
+modules.first.test1()
+modules.first.test2()
+
 pipeline {
     agent any
 	parameters {
@@ -26,14 +32,12 @@ pipeline {
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                    	echo '${params.tomcat_dev}'
                         echo "${params.tomcat_dev}"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                    	echo '${params.tomcat_prod}'
                         echo "${params.tomcat_prod}"
                     }
                 }
