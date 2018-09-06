@@ -15,10 +15,7 @@ pipeline {
 	stages{
 		
 		stage('Load Scripts') {
-			when {
-			    ${params.LOAD_SCRIPTS} == true
-			}
-			steps{
+			when (${params.LOAD_SCRIPTS} == true){
 				script{
 	           	 	modules.first = load "jenkinspipeline_groovy/src/test/test.groovy"
 	           	 	modules.first.test1()
