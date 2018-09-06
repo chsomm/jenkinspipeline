@@ -13,11 +13,13 @@ pipeline {
 
 	stages{
 		stage('Load Scripts') {
-           script{
-           	 	modules.first = load "jenkinspipeline_groovy/src/test/test.groovy"
-           	 	modules.first.test1()
-           	 	modules.first.test2()
-           }
+			steps{
+				script{
+	           	 	modules.first = load "jenkinspipeline_groovy/src/test/test.groovy"
+	           	 	modules.first.test1()
+	           	 	modules.first.test2()
+	           	}
+			}
 		}
 
         stage('Build'){
