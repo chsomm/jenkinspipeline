@@ -1,0 +1,8 @@
+<jobs>
+	<job name='Component A'>
+		<workspace>Workspace A</workspace>
+	</job>
+	<job name='Component B'>
+		<workspace>Workspace B</workspace>
+	</job>
+</jobs> 
