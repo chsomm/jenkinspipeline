@@ -5,16 +5,19 @@ seedJobs()
 def seedJobs() {
 	def parser = new XmlParser()
 	def doc = parser.parse("${workspace}\\jenkinspipeline_groovy\\resources\\jobs.xml");
+	//def doc = parser.parse("..\\jenkinspipeline_groovy\\resources\\jobs.xml");
 
-	doc.jobs.each{ bk->
+	print doc
+	
+	doc.job.each{ job->
 		print("Job Name:")
-		println "${bk['@name']}"
+		println "${job['@name']}"
 
 		print("Job Workspace:")
-		println "${bk.workspace[0].text()}"
+		println "${job.workspace[0].text()}"
 
 		println("*******************************")
-		createJob(bk)
+		//createJob(bk)
 	}
 }
 
