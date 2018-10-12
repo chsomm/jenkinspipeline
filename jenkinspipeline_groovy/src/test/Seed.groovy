@@ -7,20 +7,20 @@ def seedJobs() {
 	def workspace = binding.variables.WORKSPACE
 	def doc = parser.parse("${workspace}\\jenkinspipeline_groovy\\resources\\jobs.xml");
 
-	doc.job.each{ bk->
+	doc.job.each{ job->
 		print("Job Name:")
-		println "${bk['@name']}"
+		println "${job['@name']}"
 
 		print("Job Workspace:")
-		println "${bk.workspace[0].text()}"
+		println "${job.workspace[0].text()}"
 
 		println("*******************************")
-		createJob(bk)
+		createJob(job)
 	}
 }
 
 def createJob(def job) {
-	pipelineJob("${bk['@name']}") {
+	pipelineJob("${job['@name']}") {
 		definition {
 			cps {
 				script(readFileFromWorkspace('project-a-workflow.groovy'))
