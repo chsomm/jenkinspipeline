@@ -4,8 +4,8 @@ seedJobs()
 
 def seedJobs() {
 	def parser = new XmlParser()
-	//def doc = parser.parse("${workspace}\\jenkinspipeline_groovy\\resources\\jobs.xml");
-	def doc = parser.parse("..\\jenkinspipeline_groovy\\resources\\jobs.xml");
+	def doc = parser.parse("${workspace}\\jenkinspipeline_groovy\\resources\\jobs.xml");
+	//def doc = parser.parse("..\\jenkinspipeline_groovy\\resources\\jobs.xml");
 
 	println doc
 	
