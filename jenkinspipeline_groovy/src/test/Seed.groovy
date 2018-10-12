@@ -2,7 +2,7 @@ package test;
 
 def seedJobs() {
 	def parser = new XmlParser()
-	def doc = parser.parse("resources\\jobs.xml");
+	def doc = parser.parse("${env.WORKSPACE}\resources\\jobs.xml");
 
 	doc.job.each{ bk->
 		print("Job Name:")
