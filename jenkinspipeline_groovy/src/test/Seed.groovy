@@ -4,7 +4,7 @@ seedJobs()
 
 def seedJobs() {
 	def parser = new XmlParser()
-	def workspace = this.getProperty('binding').getVariable('workspace')
+	def workspace = this.getProperty('binding').getVariable('WORKSPACE')
 	def doc = parser.parse("${workspace}\\jenkinspipeline_groovy\\resources\\jobs.xml");
 	//def doc = parser.parse("..\\jenkinspipeline_groovy\\resources\\jobs.xml");
 
