@@ -21,10 +21,8 @@ def seedJobs() {
 
 def createJob(def job) {
 	pipelineJob("${job['@name']}") {
-		definition {
-			cps {
-				script(readFileFromWorkspace('project-a-workflow.groovy'))
-			}
+		parameters {
+			stringParam('BUILD_WORKSPACE', job.workspace[0].text, 'Build workspace')
 		}
 	}
 }
