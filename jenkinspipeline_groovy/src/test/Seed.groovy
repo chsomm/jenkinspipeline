@@ -22,7 +22,7 @@ def seedJobs() {
 def createJob(def job) {
 	pipelineJob("${job['@name']}") {
 		parameters {
-			stringParam('BUILD_WORKSPACE', job.workspace[0].text, 'Build workspace')
+			stringParam('BUILD_WORKSPACE', job.workspace[0].text(), 'Build workspace')
 		}
 	}
 }
