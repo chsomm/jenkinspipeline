@@ -1,0 +1,15 @@
+def modules = [:]
+
+pipeline {
+    agent any
+	stages{
+		stage('Seed jobs') {
+			steps{
+			    script{
+	           	 	modules.seed = load "jenkinspipeline_groovy/src/test/Seed.groovy"
+	           	 	modules.seed.seedJobs()
+           		}
+			}
+		}
+    }
+}
