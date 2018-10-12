@@ -25,4 +25,4 @@ def createJob(def job) {
 		}
 	}
 }
-
+return this
