@@ -4,8 +4,8 @@ seedJobs()
 
 def seedJobs() {
 	def parser = new XmlParser()
-	def xmlFile = readFileFromWorkspace("\\resources\\jobs.xml")
-	def doc = parser.parse(xmlFile);
+	def workspace = SEED_JOB.lastBuild.checkouts[0].workspace
+	def doc = parser.parse("${workspace}\\jenkinspipeline_groovy\\resources\\jobs.xml");
 
 	doc.job.each{ job->
 		print("Job Name:")
