@@ -1,5 +1,7 @@
 package test;
 
+seedJobs()
+
 def seedJobs() {
 	def parser = new XmlParser()
 	def doc = parser.parse("${env.WORKSPACE}\\jenkinspipeline_groovy\\resources\\jobs.xml");
