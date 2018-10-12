@@ -4,7 +4,7 @@ seedJobs()
 
 def seedJobs() {
 	def parser = new XmlParser()
-	def workspace = binding.variables.WORKSPACE
+	def workspace = hudson.model.Executor.currentExecutor().getCurrentWorkspace()
 	def doc = parser.parse("${workspace}\\jenkinspipeline_groovy\\resources\\jobs.xml");
 
 	doc.job.each{ job->
