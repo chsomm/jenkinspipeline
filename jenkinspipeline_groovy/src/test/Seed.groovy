@@ -12,6 +12,7 @@ def seedJobs() {
 	for (job in doc) {
 		println "${job['@name']}"
 		println job["workspace"].text()
+		createJob(job)
 	}
 	
 //	for (job in doc) {
