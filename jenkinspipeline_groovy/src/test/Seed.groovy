@@ -4,7 +4,7 @@ seedJobs()
 
 def seedJobs() {
 	def parser = new XmlParser()
-	def workspace = build.environment.get("WORKSPACE");
+	def workspace = binding.variables.WORKSPACE
 	def doc = parser.parse("${workspace}\\jenkinspipeline_groovy\\resources\\jobs.xml");
 
 	doc.job.each{ bk->
