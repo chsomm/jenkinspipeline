@@ -2,7 +2,7 @@ package test;
 
 def seedJobs() {
 	def parser = new XmlParser()
-	def doc = parser.parse("${env.WORKSPACE}\\resources\\jobs.xml");
+	def doc = parser.parse("${env.WORKSPACE}\\jenkinspipeline_groovy\\resources\\jobs.xml");
 
 	doc.job.each{ bk->
 		print("Job Name:")
